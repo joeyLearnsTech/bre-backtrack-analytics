@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import { Download, Eye } from 'lucide-react';
 import XmlViewer from '@/components/XmlViewer';
+import ApiComparisonChart from '@/components/ApiComparisonChart';
 
 const COLORS = ['#22c55e', '#ef4444'];
 
@@ -220,6 +221,18 @@ const Report = () => {
       <Navigation />
       <main className="max-w-7xl mx-auto py-8 px-4">
         <h1 className="text-3xl font-bold mb-8">BRE Analysis Report</h1>
+
+        {/* Add Comparison Chart */}
+        {secondaryData && (
+          <div className="mb-8">
+            <ApiComparisonChart
+              primarySuccessCount={primaryData.successCount}
+              primaryFailureCount={primaryData.failureCount}
+              secondarySuccessCount={secondaryData.successCount}
+              secondaryFailureCount={secondaryData.failureCount}
+            />
+          </div>
+        )}
 
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           {/* Primary API Stats */}
